@@ -18,27 +18,43 @@
 <div class="container">
     <div class="row">
     <button onclick="eminemMusic()">load musics</button>
-    <button onclick="metallicaMusic()">load musics</button>
-    <button onclick="bohemothMusic()">load musics</button>
+    
+    
 
 </div>
-<div id="all-Album" class="row">
+<div id="all-Eminem" class="row">
 
 </div>
 
 </div>
 <div class="container">
+
     <div class="row">
         <button onclick="metallicaMusic()">load musics</button>
     </div>
-    <div id="all-Album" class="row">
+    <div id="all-Metillaica" class="row">
     
     </div>
     
     </div>
 
+    <div class="container">
+        <div class="row">
+            <button onclick="bohemothMusic()">load musics</button>
+        </div>
+        <div id="all-Bohemoth" class="row">
+        
+        </div>
+        
+        </div>
+
+
+
+
+
+
     <script>
-        const allmusics = document.querySelector('#all-Album')
+        const allmusicsE = document.querySelector('#all-Eminem')
 
     function eminemMusic() {
         console.log('loading musics...')
@@ -50,7 +66,7 @@
         .then(eminem => {
             // console.log(musics)
             for(const song of eminem.data){
-                allmusics.innerHtml += `
+                allmusicsE.innerHtml += `
                 <h3>${song.title}</h3>
                 
                 `
@@ -59,7 +75,7 @@
         })
 
     }
-       
+    const allmusicsM = document.querySelector('#all-Metillaica')
     function metallicaMusic() {
         console.log('loading musics...')
         fetch( 'https://striveschool-api.herokuapp.com/api/deezer/search?q=metallica')
@@ -70,7 +86,7 @@
         .then(metallica => {
             // console.log(musics)
             for(const song of metallica.data){
-               allmusics.innerHTML+=`
+               allmusicsM.innerHTML+=`
                <h3>${song.title}</h3>
                `
             }
@@ -82,6 +98,7 @@
 
 
     }
+    const allmusicsB = document.querySelector('#all-Bohemoth')
     function bohemothMusic() {
         console.log('loading musics...')
         fetch( 'https://striveschool-api.herokuapp.com/api/deezer/search?q=metallica')
@@ -90,10 +107,10 @@
             return response.json()
         })
         .then(behemoth => {
-            // console.log(musics)
+            console.log(behemoth)
             for(const song of behemoth.data){
-                allmusics.innerHTML+=`
-               <h3>${song.title}</h3>
+                allmusicsB.innerHTML+=`
+               <h3>${song.album[0].md5_image}</h3>
                `
             }
             
